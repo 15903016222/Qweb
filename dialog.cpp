@@ -1,5 +1,6 @@
 #include "dialog.h"
 #include "ui_dialog.h"
+#include <QDebug>
 
 Dialog::Dialog(QWidget *parent) :
     QDialog(parent),
@@ -16,4 +17,9 @@ Dialog::~Dialog()
 void Dialog::setWebSource(QString context)
 {
     ui->textEdit->setPlainText(context);
+}
+
+void Dialog::on_buttonBox_clicked(QAbstractButton *button)
+{
+    delete this;
 }

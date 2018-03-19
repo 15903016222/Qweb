@@ -21,8 +21,6 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->lineEdit, SIGNAL(returnPressed()), this, SLOT(browserWebSlot()));
     connect(ui->webView, SIGNAL(loadProgress(int)), this->progressbar, SLOT(setValue(int)));
     connect(ui->webView, SIGNAL(loadFinished(bool)), this, SLOT(deleteprogressbarSlot(bool)));
-    connect(ui->pushButton_4, SIGNAL(clicked(bool)), this, SLOT(sourceCodeSlot()));
-    connect(ui->pushButton_5, SIGNAL(clicked(bool)), this, SLOT(setMainpageSlot()));
     connect(viewsourcecodeAction, SIGNAL(triggered()), this, SLOT(sourceCodeSlot()));
     connect(setmainpageAction, SIGNAL(triggered()), this, SLOT(setMainpageSlot()));
 }
@@ -65,7 +63,7 @@ void MainWindow::deleteprogressbarSlot(bool ok)
 void MainWindow::sourceCodeSlot()
 {
     QString context = ui->webView->page()->currentFrame()->toHtml();
-    this->hide();
+//    this->hide();
     Dialog *dialog = new Dialog;
     dialog->setWebSource(context);
     dialog->show();
