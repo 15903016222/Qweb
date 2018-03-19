@@ -7,7 +7,12 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    //实例化进度条
+    viewsourcecodeAction = new QAction ("source", this);
+    setmainpageAction = new QAction ("main", this);
+    ui->menuBar->addAction (viewsourcecodeAction);
+    ui->menuBar->addAction (setmainpageAction);
+
+    //    //实例化进度条
     this->progressbar = new QProgressBar;
     ui->statusBar->addWidget(progressbar);
     this->initMainPage();
@@ -18,8 +23,8 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->webView, SIGNAL(loadFinished(bool)), this, SLOT(deleteprogressbarSlot(bool)));
     connect(ui->pushButton_4, SIGNAL(clicked(bool)), this, SLOT(sourceCodeSlot()));
     connect(ui->pushButton_5, SIGNAL(clicked(bool)), this, SLOT(setMainpageSlot()));
-//    connect(ui->viewsourcecodeAction, SIGNAL(triggered()), this, SLOT(sourceCodeSlot()));
-//    connect(ui->setmainpageAction, SIGNAL(triggered()), this, SLOT(setMainpageSlot()));
+    connect(viewsourcecodeAction, SIGNAL(triggered()), this, SLOT(sourceCodeSlot()));
+    connect(setmainpageAction, SIGNAL(triggered()), this, SLOT(setMainpageSlot()));
 }
 
 MainWindow::~MainWindow()

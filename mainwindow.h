@@ -10,6 +10,7 @@
 #include <QMessageBox>
 #include <QDebug>
 #include <QWebFrame>
+#include <QAction>
 
 namespace Ui {
 class MainWindow;
@@ -34,6 +35,9 @@ private slots:
 private:
     Ui::MainWindow *ui;
     QProgressBar *progressbar;
+
+    QAction *viewsourcecodeAction;
+    QAction *setmainpageAction;
 
     void initMainPage();                        //浏览器初始化
 };
