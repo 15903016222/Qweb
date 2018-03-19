@@ -11,6 +11,7 @@
 #include <QDebug>
 #include <QWebFrame>
 #include <QAction>
+#include <QList>
 
 namespace Ui {
 class MainWindow;
@@ -31,6 +32,7 @@ private slots:
     void deleteprogressbarSlot(bool);           //进度条结束后状态栏显示Load Finish 5秒
     void sourceCodeSlot();                      //网页显示源代码
     void setMainpageSlot();                     //设置主页
+    void saveUrl(QString);                         //保存浏览过的网页地址
 
 private:
     Ui::MainWindow *ui;
@@ -38,6 +40,8 @@ private:
 
     QAction *viewsourcecodeAction;
     QAction *setmainpageAction;
+
+    QList<QUrl> url;
 
     void initMainPage();                        //浏览器初始化
 };

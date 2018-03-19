@@ -21,5 +21,5 @@ void Dialog::setWebSource(QString context)
 
 void Dialog::on_buttonBox_clicked(QAbstractButton *button)
 {
-    delete this;
+    delete ui;
 }
