@@ -32,8 +32,9 @@ private slots:
     void deleteprogressbarSlot(bool);           //进度条结束后状态栏显示Load Finish 5秒
     void sourceCodeSlot();                      //网页显示源代码
     void setMainpageSlot();                     //设置主页
-    void saveUrl(QString);                         //保存浏览过的网页地址
-    void testSlot(const QUrl &);
+    void saveUrl(QString);                      //保存浏览过的网页地址
+    void testSlot(const QUrl &);                //用于打开网页中二级链接的功能函数
+    void stopLoad(int);
 
 private:
     Ui::MainWindow *ui;

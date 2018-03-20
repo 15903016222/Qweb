@@ -30,6 +30,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->pushButton_3, SIGNAL(clicked(bool)), ui->webView, SLOT(back()));
     connect(ui->pushButton_2, SIGNAL(clicked(bool)), ui->webView, SLOT(forward()));
     connect(ui->pushButton, SIGNAL(clicked(bool)), ui->webView, SLOT(reload()));
+    connect(ui->webView, SIGNAL(loadProgress(int)), this, SLOT(stopLoad(int)));
 
     // 连接二级链接和槽 用于打开二级连接
     connect(ui->webView, SIGNAL(linkClicked(const QUrl &)), this, SLOT(testSlot(const QUrl &)));
@@ -110,6 +111,15 @@ void MainWindow::saveUrl(QString netAddr)
 void MainWindow::testSlot(const QUrl & url)
 {
     ui->webView->load(url);
+}
+
+void MainWindow::stopLoad(int num)
+{
+    if (num < 100) {
+        ui->pushButton->setText("停止");
+    } else {
+        ui->pushButton->setText("刷新");
+    }
 }
 
 //浏览器初始化
