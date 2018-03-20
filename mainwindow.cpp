@@ -64,8 +64,8 @@ void MainWindow::deleteprogressbarSlot(bool ok)
 {
     if(ok)
     {
-        delete this->progressbar;
-        this->progressbar = NULL;
+//        delete this->progressbar;
+//        this->progressbar = NULL;
         ui->statusBar->showMessage("Load Finish", 5*1000);
     }
 }
