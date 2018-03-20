@@ -26,6 +26,11 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(viewsourcecodeAction, SIGNAL(triggered()), this, SLOT(sourceCodeSlot()));
     connect(setmainpageAction, SIGNAL(triggered()), this, SLOT(setMainpageSlot()));
     connect(ui->lineEdit, SIGNAL(textChanged(QString)), this, SLOT(saveUrl(QString)));
+    // 后退，前进, 刷新功能
+    connect(ui->pushButton_3, SIGNAL(clicked(bool)), ui->webView, SLOT(back()));
+    connect(ui->pushButton_2, SIGNAL(clicked(bool)), ui->webView, SLOT(forward()));
+    connect(ui->pushButton, SIGNAL(clicked(bool)), ui->webView, SLOT(reload()));
+
     // 连接二级链接和槽 用于打开二级连接
     connect(ui->webView, SIGNAL(linkClicked(const QUrl &)), this, SLOT(testSlot(const QUrl &)));
 }
