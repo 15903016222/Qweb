@@ -11,10 +11,13 @@ MainWindow::MainWindow(QWidget *parent) :
     setmainpageAction = new QAction ("main", this);
     ui->menuBar->addAction (viewsourcecodeAction);
     ui->menuBar->addAction (setmainpageAction);
-    //    //实例化进度条
+    //
     this->progressbar = new QProgressBar;
     ui->statusBar->addWidget(progressbar);
     this->initMainPage();
+    // 激活二级连接
+    ui->webView->page()->setLinkDelegationPolicy(QWebPage::DelegateAllLinks);
+
     connect(ui->webView, SIGNAL(urlChanged(QUrl)), this, SLOT(setUrlSlot(QUrl)));
     connect(ui->webView, SIGNAL(titleChanged(QString)), this, SLOT(settitleSlot(QString)));
     connect(ui->lineEdit, SIGNAL(returnPressed()), this, SLOT(browserWebSlot()));
@@ -23,6 +26,8 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(viewsourcecodeAction, SIGNAL(triggered()), this, SLOT(sourceCodeSlot()));
     connect(setmainpageAction, SIGNAL(triggered()), this, SLOT(setMainpageSlot()));
     connect(ui->lineEdit, SIGNAL(textChanged(QString)), this, SLOT(saveUrl(QString)));
+    // 连接二级链接和槽 用于打开二级连接
+    connect(ui->webView, SIGNAL(linkClicked(const QUrl &)), this, SLOT(testSlot(const QUrl &)));
 }
 
 MainWindow::~MainWindow()
@@ -94,8 +99,12 @@ void MainWindow::setMainpageSlot()
 
 void MainWindow::saveUrl(QString netAddr)
 {
-    qDebug ("000000000");
     url.append(QUrl(netAddr));
+}
+
+void MainWindow::testSlot(const QUrl & url)
+{
+    ui->webView->load(url);
 }
 
 //浏览器初始化

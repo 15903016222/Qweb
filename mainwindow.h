@@ -33,6 +33,7 @@ private slots:
     void sourceCodeSlot();                      //网页显示源代码
     void setMainpageSlot();                     //设置主页
     void saveUrl(QString);                         //保存浏览过的网页地址
+    void testSlot(const QUrl &);
 
 private:
     Ui::MainWindow *ui;
