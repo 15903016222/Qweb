@@ -36,6 +36,8 @@ private slots:
     void testSlot(const QUrl &);                //用于打开网页中二级链接的功能函数
     void stopLoad(int);
 
+    void on_pushButton_4_clicked();
+
 private:
     Ui::MainWindow *ui;
     QProgressBar *progressbar;

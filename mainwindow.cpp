@@ -147,3 +147,8 @@ void MainWindow::initMainPage()
         return;
     }
 }
+
+void MainWindow::on_pushButton_4_clicked()
+{
+    qDebug ("%s\n", ui->webView->history()->currentItem().url().toString().toLatin1().data());
+}
