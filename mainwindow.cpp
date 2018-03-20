@@ -117,8 +117,12 @@ void MainWindow::stopLoad(int num)
 {
     if (num < 100) {
         ui->pushButton->setText("停止");
+        this->progressbar->show();
+        this->progressbar->setValue(num);
     } else {
         ui->pushButton->setText("刷新");
+        this->progressbar->hide();
+        ui->statusBar->showMessage("Load Finish", 5*1000);
     }
 }
 
